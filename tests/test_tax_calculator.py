@@ -48,9 +48,9 @@ class TestTaxCalculator(unittest.TestCase):
         return tax_data
 
     def check_data(self,actual,expected):
-        self.assertEqual(actual.get_inputlist() ,expected.get_inputlist())
-        self.assertEqual(actual.get_sales_tax() , expected.get_sales_tax())
-        self.assertEqual(actual.get_total_price() ,expected.get_total_price())
+        self.assertEqual(actual.get_inputlist() ,expected.get_inputlist(),"Expected price of items Differs")
+        self.assertEqual(actual.get_sales_tax() , expected.get_sales_tax(),"Expected Sales Tax Mismatch")
+        self.assertEqual(actual.get_total_price() ,expected.get_total_price(),"Total Sum Price Differs")
 
 
 if __name__ == '__main__':
