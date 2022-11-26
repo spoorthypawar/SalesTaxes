@@ -1,7 +1,7 @@
 import sys
 sys.path.append("..")
 import unittest
-from src.taxCalculator import *
+from src.tax_calculator import *
 
 class TestTaxCalculator(unittest.TestCase):
 
@@ -13,14 +13,19 @@ class TestTaxCalculator(unittest.TestCase):
 
     def test_importTaxCalculator(self):
         self.assertEqual((importTaxCalculator(10.00)),0.5)
-        self.assertEqual((importTaxCalculator(47.50)),2.4)
+        self.assertEqual((importTaxCalculator(47.50,)),2.4)
         self.assertEqual((importTaxCalculator(27.99)),1.4)
+
+
+
 
     def test_tax_calculato_usecase1(self):
         inputlist = ["1 book at 12.49","1 music CD at 14.99","1 chocolate bar at 0.85"]
         outputlist=["1 book: 12.49","1 music CD: 16.49","1 chocolate bar: 0.85"]
         data=self.create_tax_data(outputlist,1.5,29.83)
         self.check_data((tax_calculator(inputlist)),data)
+
+
 
     def test_tax_calculato_usecase2(self):
         inputlist = ["1 imported box of chocolates at 10.00", "1 imported bottle of perfume at 47.50"]
@@ -46,8 +51,6 @@ class TestTaxCalculator(unittest.TestCase):
         self.assertEqual(actual.get_inputlist() ,expected.get_inputlist())
         self.assertEqual(actual.get_sales_tax() , expected.get_sales_tax())
         self.assertEqual(actual.get_total_price() ,expected.get_total_price())
-   
-       
 
 
 if __name__ == '__main__':
