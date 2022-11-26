@@ -1,3 +1,4 @@
+import sys
 import math
 
 class TaxData:
@@ -37,14 +38,9 @@ def basicTaxCalculator(item_price):
     return math.ceil(tax*20) / 20
 
 
-def getInputData():
-    input_item_list = []
-    while True:
-        data = input( )
-        if data == "":
-            break
-        else:
-            input_item_list.append(data)
+def getInputData(file):
+    with open(file) as line:
+        input_item_list = line.readlines()
     return input_item_list
 
 def tax_calculator(input_item_list):
@@ -61,9 +57,7 @@ def tax_calculator(input_item_list):
 
         if "imported" in item:
             import_tax += importTaxCalculator(item_price)
-        if any(substring  in item for substring in exempt_set):
-            tax_flag = False
-        else:
+        if not(any(substring  in item for substring in exempt_set)):
             sales_tax += basicTaxCalculator(item_price)
 
         inputItem = item.split(" at ")
@@ -82,12 +76,20 @@ def tax_calculator(input_item_list):
     return tax_data
 
 def display_data(data):
+    print("\n================OUTPUT======================")
     for value in data.get_inputlist():
         print(value)
     print("Sales Taxes:",data.get_sales_tax())
     print("Total:",data.get_total_price())
 
 if __name__ == "__main__":
-    input_list = getInputData()
+    input_list = getInputData(sys.argv[1])
+    print("=================INPUT=====================")
+    for line in input_list:
+        print(line.strip())
     data = tax_calculator(input_list)
     display_data(data)
+
+
+
+
