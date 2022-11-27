@@ -11,7 +11,9 @@ A directory containg unit tests file called "test_tax_calculator.py".
 2. Clone this repository.
 3. Now you will have folder called "SalesTaxes".
 4. Navigate to the "src" directory in terminal.
-5. To run the program type the following command in the terminal ``` python3 tax_calculator.py  "input1.txt" ```
+5. To run the program type the following command in the terminal ``` python3 tax_calculator.py  input1.txt ```
+
+NOTE: Please set the Python Path before you run this command or copy the path of python.exe ``` C:\your_system_path\python\python.exe tax_calculator.py input2.txt ```
 
 # How TO RUN TESTS
 
